@@ -29,11 +29,7 @@ namespace Lab4
             };
             orders.Add(defaultOrder);
 
-            string student = "Michael McDonald";
-            bool deliver = false;
-            decimal amount = -10m;
-
-            Order order2 = new Order(student, deliver, amount);
+            Order order2 = new Order("Michael McDonald", false, -10m);
             orders.Add(order2);
 
             DisplayList();

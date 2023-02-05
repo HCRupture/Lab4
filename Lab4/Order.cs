@@ -39,10 +39,11 @@ namespace Lab4
         {
             get { return amount; }
             set { 
-                if (amount < 0) 
-                    amount = 0;
-                amount = value; 
+                if (Amount < 0) { 
+                    amount = 0m;
                 }
+                amount = value;
+            }
         }
 
         // Methods
@@ -53,18 +54,18 @@ namespace Lab4
             amount = 159.99m;
         }
 
-        public Order(string name, bool deliver, decimal amount)
+        public Order(string Name, bool deliver, decimal amount)
         {
-            SetID();
-            OrderID = orderID;
-            Name = name;
-            Delivery = deliver;
-            Amount = amount;
+            orderID = SetID();
+            name = Name;
+            delivery = deliver;
+            amount = Amount;
         }
 
         private int SetID()
         {
-            orderID = nextID + 10;
+            orderID = nextID;
+            nextID = nextID + 10;
             return orderID; 
         }
 
@@ -72,7 +73,7 @@ namespace Lab4
         {
             string deliveryStatus = "N";
             if (delivery == true) deliveryStatus = "Y";
-            string orderFormat = String.Format("{0,-3}{1,-25}{2,1}{3,8}",orderID.ToString(), name, deliveryStatus, amount.ToString("c"));
+            string orderFormat = String.Format("{0,-3}{1,-25}{2,1}{3,8}",orderID.ToString() + "\t", name, deliveryStatus, amount.ToString("c"));
 
             return orderFormat;
         }
